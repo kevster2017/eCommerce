@@ -12,8 +12,15 @@ class ProductController extends Controller
 {
     function index()
     {
-        $data= Product::all();
+        $product= Product::all();
 
-       return view('product',['products'=>$data]);
+       return view('product',['products'=>$product]);
+    }
+
+    function show($id)
+    {
+        $product = Product::find($id);
+
+       return view('show',['products'=>$product]);
     }
 }

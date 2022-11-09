@@ -9,14 +9,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
@@ -36,18 +34,22 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Orders</a>
+          <a class="nav-link active" aria-current="page" href="#">Orders</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Cart (0)</a>
-        </li>
-                    </ul>
+
+                    
                     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+
+                    </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Cart (0)</a>
+        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -88,26 +90,45 @@
         <main class="py-4">
            
             @yield('content')
-            {{View::make('footer')}}
         </main>
-
-
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </body>
 
 <style>
-img.slider-img{
-    height:400px !important
-}
-    .custom-product{
-        height: 600px
-    }
 
-    .slider-text{
-    
-        background-color: #35443585 !important;
-    }
+img.slider-img{
+    height: 400px !important
+}
+
+.custom-product{
+height: 600px
+
+}
+
+.slider-text{
+background-color: #35443585;
+
+}
+
+.trending-wrapper{
+    margin: 30px;
+}
+
+.trending-item{
+    float: left;
+    width: 25%;
+}
+
+.trending-img{
+    height: 100px;
+}
+
+.detail-img{
+    height:100px;
+}
+
 </style>
 </html>
