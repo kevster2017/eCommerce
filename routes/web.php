@@ -23,6 +23,7 @@ Route::get('/dashboard', function () {
 
 Route::get("/",[ProductController::class,'index']);
 Route::get("/show/{id}",[ProductController::class,'show']);
+Route::post("/add_to_cart",[ProductController::class,'addToCart']);
 
 require __DIR__.'/auth.php';
 

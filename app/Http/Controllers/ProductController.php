@@ -23,4 +23,16 @@ class ProductController extends Controller
 
        return view('show',['products'=>$product]);
     }
+
+    function addToCart(Request $request)
+    {
+        if($request->session()->has('user'))
+        {
+
+        }
+        else 
+        
+
+       return view('auth/login');
+    }
 }
