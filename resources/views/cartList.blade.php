@@ -6,7 +6,7 @@
 <div class="col-sm-10"> 
 <div class="trending-wrapper">
       <h3>Result for Products</h3>
-     
+     <a class="btn btn-success" href="orderNow">Order Now</a>
       @foreach($products as $product)
       <div class="row searched-item cart-list-divider">
         <div class="col-sm-3">
@@ -24,12 +24,13 @@
       </a>
         </div>
         <div class="col-sm-3">
-        <button class="btn btn-warning">Remove from Cart</button>
+        <a href="/removeCart/{{ $product->cart_id}}" class="btn btn-warning">Remove from Cart</a>
         </div>
       
     </div>
 @endforeach
 </div>
+<a class="btn btn-success" href="orderNow">Order Now</a>
     </div>
 </div>
 @endsection

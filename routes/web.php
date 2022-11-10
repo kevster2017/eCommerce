@@ -26,6 +26,11 @@ Route::get("/",[ProductController::class,'index']);
 Route::get("/show/{id}",[ProductController::class,'show']);
 Route::post("/add_to_cart",[ProductController::class,'addToCart'])->middleware('auth');
 Route::get("/cartList",[ProductController::class,'cartList'])->middleware('auth');
+Route::get("/removeCart/{id}",[ProductController::class,'removeCart']);
+Route::get("/orderNow",[ProductController::class,'orderNow']);
+Route::post("/placeOrder",[ProductController::class,'placeOrder']);
+Route::get("/myOrders",[ProductController::class,'myOrders']);
+
 
 require __DIR__.'/auth.php';
 

@@ -41,7 +41,7 @@ $total = ProductController::cartItem();
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Orders</a>
+          <a class="nav-link active" aria-current="page" href="/myOrders">Orders</a>
         </li>
 
                     

@@ -74,9 +74,64 @@ return redirect('/');
         $products = DB::table('cart')
             ->join('products', 'cart.product_id', '=', 'product_id')
             ->where('cart.user_id', $user_id)
-            ->select('products.*')
+            ->select('products.*', 'cart.id as cart_id')
             ->get();
 
         return view('cartList', ['products' =>$products]);
+    }
+
+    function removeCart($id)
+    {
+        Cart::destroy($id);
+
+        return redirect('cartList');
+    }
+
+    function orderNow()
+    {
+
+        $user_id = auth()->user()->id;
+        $total = $products = DB::table('cart')
+            ->join('products', 'cart.product_id', '=', 'product_id')
+            ->where('cart.user_id', $user_id)
+            ->sum('products.price');
+            
+
+        return view('orderNow', ['total' =>$total]);
+    }
+
+    function placeOrder(Request $req)
+    {
+        $user_id = auth()->user()->id;
+        $fullCart = Cart::where('user_id', $user_id)
+        ->get();
+
+        foreach($fullCart as $cart)
+        {
+            $order = new Order;
+            $order->product_id = $cart->product_id;
+            $order->user_id = $cart->user_id;
+            $order->status = "pending";
+            $order->address = $req->address;
+            $order->payment_method = $req->payment;
+            $order->payment_status = "pending";
+            $order->save();
+            Cart::where('user_id', $user_id)->delete();
+
+        }
+return redirect('/');
+    }
+
+    function myOrders()
+    {
+        
+        $user_id = auth()->user()->id;
+         $orders = DB::table('orders')
+            ->join('products', 'orders.product_id', '=', 'product_id')
+            ->where('orders.user_id', $user_id)
+            ->get();
+            
+
+        return view('myOrders', ['orders' =>$orders]);
     }
 }
