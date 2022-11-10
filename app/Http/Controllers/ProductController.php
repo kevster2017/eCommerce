@@ -13,11 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
 
-    // Ensure user logged in
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     function index()
     {
@@ -25,6 +21,12 @@ class ProductController extends Controller
 
         return view('product', ['products' => $product]);
     }
+
+     // Ensure user logged in
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
 
     function show($id)
     {
@@ -36,21 +38,6 @@ class ProductController extends Controller
     function addToCart(Request $request)
     {
 
-        /*
-        if ($request->session()->has('user')) {
-            $cart = new Cart;
-            $cart->user_id = $request->auth()->user()->id;
-            $cart->product_id = $request->product_id;
-            $cart->save();
-return redirect('/');
-
-        } else
-
-
-            return view('auth/login');
-    }
-
-    */
 
         $cart = new Cart;
         $cart->user_id = auth()->user()->id;
@@ -72,7 +59,7 @@ return redirect('/');
 
         $user_id = auth()->user()->id;
         $products = DB::table('cart')
-            ->join('products', 'cart.product_id', '=', 'product_id')
+            ->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $user_id)
             ->select('products.*', 'cart.id as cart_id')
             ->get();
@@ -92,7 +79,7 @@ return redirect('/');
 
         $user_id = auth()->user()->id;
         $total = $products = DB::table('cart')
-            ->join('products', 'cart.product_id', '=', 'product_id')
+            ->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $user_id)
             ->sum('products.price');
             
@@ -127,7 +114,7 @@ return redirect('/');
         
         $user_id = auth()->user()->id;
          $orders = DB::table('orders')
-            ->join('products', 'orders.product_id', '=', 'product_id')
+            ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('orders.user_id', $user_id)
             ->get();
             

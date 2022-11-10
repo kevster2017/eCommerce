@@ -13,7 +13,7 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
