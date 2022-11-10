@@ -17,6 +17,12 @@
 
 </head>
 <body>
+
+<?php use App\Http\Controllers\ProductController;
+$total = ProductController::cartItem();
+
+?>
+
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
@@ -48,7 +54,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Cart (0)</a>
+          <a class="nav-link active" aria-current="page" href="/cartList">Cart ({{ $total }})</a>
         </li>
                         <!-- Authentication Links -->
                         @guest
