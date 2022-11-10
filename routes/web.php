@@ -25,6 +25,7 @@ Route::get('/', function () {
 Route::get("/",[ProductController::class,'index']);
 Route::get("/show/{id}",[ProductController::class,'show']);
 Route::post("/add_to_cart",[ProductController::class,'addToCart'])->middleware('auth');
+Route::get("/cartList",[ProductController::class,'cartList'])->middleware('auth');
 
 require __DIR__.'/auth.php';
 

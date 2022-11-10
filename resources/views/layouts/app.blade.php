@@ -19,6 +19,7 @@
 <body>
 
 <?php use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Auth;
 $total = ProductController::cartItem();
 
 ?>
@@ -54,7 +55,12 @@ $total = ProductController::cartItem();
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        @if(Auth::User()->id === null)
+                        <a class="nav-link active" aria-current="page" href="/cartList">Cart (0)</a>
+          @else
+          
           <a class="nav-link active" aria-current="page" href="/cartList">Cart ({{ $total }})</a>
+          @endif
         </li>
                         <!-- Authentication Links -->
                         @guest
@@ -134,6 +140,12 @@ background-color: #35443585;
 
 .detail-img{
     height:100px;
+}
+
+.cart-list-divider{
+    border-bottom: 1px solid grey;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 </style>
