@@ -25,27 +25,28 @@ The application was developed using Laravel 9 and Bootstrap 5.2
 
 ### Standard User Features
 Once registered/logged in, a standard user can avail of the following features:
-•	View the products listed on the site. This includes viewing a selection of 4 recently added items and 4 trending items.
-•	A user can view an index of items by category, e.g., Consoles or Mobiles. 
-•	View the profile of an individual item.
-•	Add items to cart
-•	Remove items from cart
-•	Order an item
-•	Enter their card details to pay for the item
-•	View their order history
+* 	View the products listed on the site. This includes viewing a selection of 4 recently added items and 4 trending items.
+*	A user can view an index of items by category, e.g., Consoles or Mobiles. 
+*	View the profile of an individual item.
+*	Add items to cart
+*	Remove items from cart
+*	Order an item
+*	Enter their card details to pay for the item
+* 	View their order history
 ### Administrator Features
 In addition to standard user features, an administrator is provided with the following features:
-•	List an item for sale
-•	View all orders
-•	Edit an item, e.g., Change the price of an item
-•	Delete an item 
-•	Update an order status, e.g., Change status from Pending to Dispatched
+*	List an item for sale
+*	View all orders
+*	Edit an item, e.g., Change the price of an item
+*	Delete an item 
+*	Update an order status, e.g., Change status from Pending to Dispatched
 ## Stripe payment
 To use the Stripe payment system, a user is required to enter the following card details
-Name: Test
-Card Number: 4242 4242 4242 4242
-CVC: 987
-Expiry Date M/Y: 12/2034
+* Name: Test
+* Card Number: 4242 4242 4242 4242
+* CVC: 987
+* Expiry Date M/Y: 12/2034
+
 Further information on Stripe Payments can be found at: https://stripe.com/docs/testing
 
 
