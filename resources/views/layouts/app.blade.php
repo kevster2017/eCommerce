@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'eCommerce') }}</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -15,13 +15,13 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
 <?php use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
-
-
 ?>
 
     <div id="app">
@@ -38,12 +38,21 @@ use Illuminate\Support\Facades\Auth;
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="/products">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/myOrders">Orders</a>
+          <a class="nav-link active" aria-current="page" href="/orders/myOrders">Orders</a>
         </li>
 
+<!-- Display only if the authenticated user is an admin -->
+@if(auth()->check() && auth()->user()->is_admin == 1)
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/products/create">Add New Item</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{ route('orders.index') }}">All Orders</a>
+        </li>
+@endif
                     
                     <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -57,7 +66,7 @@ use Illuminate\Support\Facades\Auth;
                   
                         <!-- Authentication Links -->
                         @guest
-                        <a class="nav-link active" aria-current="page" href="/cartList">Cart (0)</a>
+                        <a class="nav-link active" aria-current="page" href="/orders/cartList">Cart (0)</a>
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -74,7 +83,7 @@ use Illuminate\Support\Facades\Auth;
                         $total = ProductController::cartItem();
                         ?>
 
-                        <a class="nav-link active" aria-current="page" href="/cartList">Cart ({{ $total }})</a>
+                        <a class="nav-link active" aria-current="page" href="/orders/cartList">Cart ({{ $total }})</a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -98,12 +107,14 @@ use Illuminate\Support\Facades\Auth;
             </div>
         </nav>
 
-        <main class="py-4">
-           
+        <main class="my-4">
+           @include('flashMessage')
             @yield('content')
+         
         </main>
+
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted mt-auto ">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
@@ -218,12 +229,13 @@ use Illuminate\Support\Facades\Auth;
 
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-    © 2022 Copyright:
+    © 2022-{{ now()->year }} Copyright:
     <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Kev's eCommerce</a>
   </div>
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
+
 
     </div>
 
@@ -242,18 +254,22 @@ height: 600px
 
 }
 
+.loginView{
+height: 650px
+
+}
+
 .slider-text{
 background-color: #35443585;
 
 }
 
-.trending-wrapper{
-    margin: 30px;
-}
+
 
 .trending-item{
     float: left;
     width: 25%;
+   
 }
 
 .trending-img{
@@ -261,7 +277,7 @@ background-color: #35443585;
 }
 
 .detail-img{
-    height:100px;
+    height:300px;
 }
 
 .cart-list-divider{
@@ -270,5 +286,70 @@ background-color: #35443585;
     padding-bottom: 20px;
 }
 
+main {
+  margin-bottom: 2em;
+    min-height: 100%;
+    overflow: auto;
+    padding: 0 2em;
+}
+
+footer {
+  position:absolute;
+  width:100%;
+  bottom:0;
+}
+
+
+
 </style>
+
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript">
+$(function() {
+  var $form = $(".require-validation");
+  $('form.require-validation').bind('submit', function(e) {
+    var $form = $(".require-validation"),
+    inputSelector = ['input[type=email]', 'input[type=password]', 'input[type=text]', 'input[type=file]', 'textarea'].join(', '),
+    $inputs = $form.find('.required').find(inputSelector),
+    $errorMessage = $form.find('div.error'),
+    valid = true;
+    $errorMessage.addClass('hide');
+    $('.has-error').removeClass('has-error');
+    $inputs.each(function(i, el) {
+        var $input = $(el);
+        if ($input.val() === '') {
+            $input.parent().addClass('has-error');
+            $errorMessage.removeClass('hide');
+            e.preventDefault();
+        }
+    });
+    if (!$form.data('cc-on-file')) {
+      e.preventDefault();
+      Stripe.setPublishableKey($form.data('stripe-publishable-key'));
+      Stripe.createToken({
+          number: $('.card-number').val(),
+          cvc: $('.card-cvc').val(),
+          exp_month: $('.card-expiry-month').val(),
+          exp_year: $('.card-expiry-year').val()
+      }, stripeResponseHandler);
+    }
+  });
+
+  function stripeResponseHandler(status, response) {
+      if (response.error) {
+          $('.error')
+              .removeClass('hide')
+              .find('.alert')
+              .text(response.error.message);
+      } else {
+          /* token contains id, last4, and card type */
+          var token = response['id'];
+          $form.find('input[type=text]').empty();
+          $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+          $form.get(0).submit();
+      }
+  }
+});
+</script>
 </html>
