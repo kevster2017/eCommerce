@@ -9,10 +9,10 @@ The application will allow a user to register an account and create their profil
 The database also contains a column called ‘is_admin’. By changing is_admin to 1, the user becomes an administrator, unlocking the administrator features. 
 ## Build
 The application was developed using Laravel 9 and Bootstrap 5.2
-Docker Desktop used to run the application
-Mailtrap used to simulate the user’s mailbox
-TablePlus used to display the MySQL database
-Stripe payment system used to simulate the payment process
+* Docker Desktop used to run the application
+* Mailtrap used to simulate the user’s mailbox
+* TablePlus used to display the MySQL database
+* Stripe payment system used to simulate the payment process
 
 ## Features
 * Authentication - Registration and Login
