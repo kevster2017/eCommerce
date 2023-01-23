@@ -70,3 +70,19 @@ border-radius: 5px;
 #newInItems {
   background-color: blue;
 }
+
+#register, #login {
+  background: url("/storage/images/background.jpg") center center/cover no-repeat;
+  padding-top: 30px;
+}
+
+.card-header {
+  background: url("/storage/images/bg-head.jpg") center center/cover no-repeat;
+  height: 200px;
+  text-align: center;
+  color:aliceblue;
+}
+
+.card-body {
+  background-color: aliceblue;
+}
