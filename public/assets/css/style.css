@@ -1,0 +1,72 @@
+#background {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: url("/storage/images/background.jpg") top center;
+    background-size: cover;
+    position: relative;
+  }
+
+  
+img.slider-img{
+    height: 400px !important
+}
+
+.custom-product{
+height: 600px
+
+}
+
+.loginView{
+height: 650px
+
+}
+
+.slider-text{
+background-color: #35443585;
+
+}
+
+
+.trending-item{
+    float: left;
+    width: 25%;
+    padding-top: 30px;
+   
+}
+
+.trending-img{
+    height: 100px;
+}
+
+.detail-img{
+    height:300px;
+}
+
+.cart-list-divider{
+    border-bottom: 1px solid grey;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+main {
+  margin-bottom: 2em;
+    min-height: 100%;
+    overflow: auto;
+    padding: 0 2em;
+}
+
+footer {
+  position:relative;
+  width:100%;
+  bottom:0;
+}
+
+#newIn {
+background-color: rgb(198, 208, 204);
+border-radius: 5px;
+}
+
+#newInItems {
+  background-color: blue;
+}

@@ -15,14 +15,13 @@
 
 <!--Main container for background-->
 <div class="container loginView">
-  
 
     <h1 class="container text-center"><label for="consoles"><strong>Consoles</strong></label></h1>
 
       <br>
 
 
-    <!-- Check and display if there are no trades listed -->
+    <!-- Check and display if there are no consoles listed -->
     @if(count($consoles) < 1) <div class="container">
       <div class="alert alert-warning">
         <p class="text-center"><strong>Sorry!</strong> No Consoles Found. </p>

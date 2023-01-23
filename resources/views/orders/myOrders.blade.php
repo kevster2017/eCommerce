@@ -23,12 +23,9 @@
             <h5>Payment Method: {{ $order->payment_method }}</h5>
             <h5>Order Placed: {{ \Carbon\Carbon::parse($order->created_at)->diffForHumans() }}</h5>
 
-
-
           </div>
 
         </div>
-
 
       </div>
       @endforeach

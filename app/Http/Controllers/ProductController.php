@@ -20,8 +20,8 @@ class ProductController extends Controller
         $CarProducts = Product::all();
 
         $products = Product::latest()
-        ->take(4)  
-        ->get();
+            ->take(4)
+            ->get();
 
         $trends = Product::all()
             ->take(-4);
@@ -202,7 +202,7 @@ class ProductController extends Controller
 
     public function editOrder($id)
     {
-        $order= Order::findOrFail($id);
+        $order = Order::findOrFail($id);
 
 
         $arr['order'] = $order;
@@ -244,8 +244,8 @@ class ProductController extends Controller
     public function updateOrder(Request $request, $id)
     {
 
-       
-        $order= Order::find($id);
+
+        $order = Order::find($id);
 
         if (!empty($request->input('address'))) {
             $order->address = $request->input('address');
@@ -259,7 +259,7 @@ class ProductController extends Controller
             $order->payment_status = $request->input('payment_status');
         }
 
-        
+
 
         //  dd($request);
         $order->save();

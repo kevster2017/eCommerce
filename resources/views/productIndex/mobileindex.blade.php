@@ -24,7 +24,7 @@
   <br>
 
 
-  <!-- Check and display if there are no trades listed -->
+  <!-- Check and display if there are no mobiles listed -->
   @if(count($mobiles) < 1) <div class="container">
     <div class="alert alert-warning">
       <p class="text-center"><strong>Sorry!</strong> No Mobiles Found. </p>
@@ -33,7 +33,7 @@
 
 @endif
 
-<!-- Show all TVs -->
+<!-- Show all Mobiles -->
 @foreach($mobiles as $mobile)
 <div class="col d-flex justify-content-center">
   <div class="card mb-3 card border-dark mb-3" style="max-width: 720px;">

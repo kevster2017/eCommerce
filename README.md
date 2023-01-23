@@ -7,6 +7,7 @@ They system is designed using a Model View Controller (MVC) architecture.
 ## Description
 The application will allow a user to register an account and create their profile. A welcome email is then sent to the new user welcoming them to the application. 
 The database also contains a column called ‘is_admin’. By changing is_admin to 1, the user becomes an administrator, unlocking the administrator features. 
+
 ## Build
 The application was developed using Laravel 9 and Bootstrap 5.2
 * Docker Desktop used to run the application
@@ -22,10 +23,11 @@ The application was developed using Laravel 9 and Bootstrap 5.2
 * Image Upload
 * Middleware
 * Stripe payments
+* Font Awesome Icons
 
 ### Standard User Features
 Once registered/logged in, a standard user can avail of the following features:
-* 	View the products listed on the site. This includes viewing a selection of 4 recently added items and 4 trending items.
+* 	View the products listed on the site. This includes viewing a selection of 4 recently added items.
 *	A user can view an index of items by category, e.g., Consoles or Mobiles. 
 *	View the profile of an individual item.
 *	Add items to cart
@@ -33,6 +35,7 @@ Once registered/logged in, a standard user can avail of the following features:
 *	Order an item
 *	Enter their card details to pay for the item
 * 	View their order history
+
 ### Administrator Features
 In addition to standard user features, an administrator is provided with the following features:
 *	List an item for sale
@@ -40,6 +43,7 @@ In addition to standard user features, an administrator is provided with the fol
 *	Edit an item, e.g., Change the price of an item
 *	Delete an item 
 *	Update an order status, e.g., Change status from Pending to Dispatched
+
 ## Stripe payment
 To use the Stripe payment system, a user is required to enter the following card details
 * Name: Test

@@ -24,7 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        
+
     ];
 
     /**
@@ -46,7 +46,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected static function boot() {
+
+    /* Send a Welcome email upon user account registration */
+    protected static function boot()
+    {
 
         parent::boot();
 

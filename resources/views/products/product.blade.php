@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section("content")
 
+
+
 <div class="container custom-product">
 
   <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -8,6 +10,9 @@
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" aria-label="Slide 6"></button>   
     </div>
 
     <div class="carousel-inner">
@@ -42,18 +47,18 @@
     <a class="btn btn-primary" href="{{ route('products.tvindex') }}">TVs</a>
     <a class="btn btn-secondary" href="{{ route('products.fridgeindex') }}">Fridges</a>
     <a class="btn btn-success" href="{{ route('products.consoleindex') }}">Consoles</a>
-    <a class="btn btn-danger" href="{{ route('products.mobileindex') }}">Mobiles</a>    
+    <a class="btn btn-info" href="{{ route('products.mobileindex') }}">Mobiles</a>    
     <a class="btn btn-warning" href="{{ route('products.wmindex') }}">Washing Machines</a>
-    <a class="btn btn-info" href="{{ route('products.cookerindex') }}">Cookers</a>
+    <a class="btn btn-danger" href="{{ route('products.cookerindex') }}">Cookers</a>
 
   </div>
 
 
-<section>
+<div class="container" id="newIn">
     <h3>New In</h3>
    
     @foreach($products as $product)
-    <div class="container mt-2">
+    <div class="container mt-2" id="newInItems">
       <div class="trending-item">
         <a href="/products/show/{{ $product->id }}">
           <img class="trending-img" src="/storage/{{ $product->image }}">
@@ -67,7 +72,7 @@
       @endforeach
     </div>
 
-</section>
+</div>
 
 
 

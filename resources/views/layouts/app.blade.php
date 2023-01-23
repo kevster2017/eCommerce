@@ -14,6 +14,10 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"> 
+
+    <link href="{{ URL::asset('assets/css/style.css'); }}" rel="stylesheet">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -54,11 +58,7 @@ use Illuminate\Support\Facades\Auth;
         </li>
 @endif
                     
-                    <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-
+                  
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -114,39 +114,8 @@ use Illuminate\Support\Facades\Auth;
         </main>
 
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted mt-auto ">
-  <!-- Section: Social media -->
-  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-    <!-- Left -->
-    <div class="container">
-      <span>Get connected with us on social networks:</span>
-    </div>
-    <!-- Left -->
-
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-    <!-- Right -->
-  </section>
-  <!-- Section: Social media -->
+<footer class="text-center text-lg-start bg-light text-muted mt-auto pt-1">
+ 
 
   <!-- Section: Links  -->
   <section class="">
@@ -157,11 +126,10 @@ use Illuminate\Support\Facades\Auth;
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
           <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>Company name
+            <i class="fas fa-gem me-3"></i>Kev's eCommerce
           </h6>
           <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
+            This is an example of an eCommerce website. 
           </p>
         </div>
         <!-- Grid column -->
@@ -173,16 +141,16 @@ use Illuminate\Support\Facades\Auth;
             Products
           </h6>
           <p>
-            <a href="#!" class="text-reset">Angular</a>
+            <a href="{{ route('products.fridgeindex') }}" class="text-reset">Fridges</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">React</a>
+            <a href="{{ route('products.consoleindex') }}" class="text-reset">Consoles</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Vue</a>
+            <a href="{{ route('products.tvindex') }}" class="text-reset">TVs</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Laravel</a>
+            <a href="{{ route('products.mobileindex') }}" class="text-reset">Mobiles</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -200,7 +168,7 @@ use Illuminate\Support\Facades\Auth;
             <a href="#!" class="text-reset">Settings</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Orders</a>
+            <a href="/orders/myOrders" class="text-reset">Orders</a>
           </p>
           <p>
             <a href="#!" class="text-reset">Help</a>
@@ -212,10 +180,10 @@ use Illuminate\Support\Facades\Auth;
         <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-          <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+          <p><i class="fas fa-home me-3"></i> Belfast, Co. Antrim</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
-            info@example.com
+            kevsecommerce@gmail.com
           </p>
           <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
           <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
@@ -230,7 +198,7 @@ use Illuminate\Support\Facades\Auth;
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
     © 2022-{{ now()->year }} Copyright:
-    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">Kev's eCommerce</a>
+    <a class="text-reset fw-bold" href="/products">Kev's eCommerce</a>
   </div>
   <!-- Copyright -->
 </footer>
@@ -243,65 +211,6 @@ use Illuminate\Support\Facades\Auth;
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 </body>
 
-<style>
-
-img.slider-img{
-    height: 400px !important
-}
-
-.custom-product{
-height: 600px
-
-}
-
-.loginView{
-height: 650px
-
-}
-
-.slider-text{
-background-color: #35443585;
-
-}
-
-
-
-.trending-item{
-    float: left;
-    width: 25%;
-   
-}
-
-.trending-img{
-    height: 100px;
-}
-
-.detail-img{
-    height:300px;
-}
-
-.cart-list-divider{
-    border-bottom: 1px solid grey;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-}
-
-main {
-  margin-bottom: 2em;
-    min-height: 100%;
-    overflow: auto;
-    padding: 0 2em;
-}
-
-footer {
-  position:absolute;
-  width:100%;
-  bottom:0;
-}
-
-
-
-</style>
 
 
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
