@@ -22,6 +22,7 @@
             <h5>Payment Status: {{ $order->payment_status }}</h5>
             <h5>Payment Method: {{ $order->payment_method }}</h5>
             <h5>Order Placed: {{ \Carbon\Carbon::parse($order->created_at)->diffForHumans() }}</h5>
+            <h5>Order Updated: {{ \Carbon\Carbon::parse($order->updated_at)->diffForHumans() }}</h5>
 
           </div>
 

@@ -138,7 +138,7 @@ class ProductController extends Controller
             ->paginate(5);
 
 
-        dd($orders);
+        // dd($orders);
 
         return view('orders.myOrders', ['orders' => $orders]);
     }

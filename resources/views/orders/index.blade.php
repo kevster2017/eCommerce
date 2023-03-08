@@ -4,12 +4,13 @@
 <div class="container loginView">
 
   <div class="col-sm-10">
-    <div class="trending-wrapper">
+    <div class="container">
       <h3>All Orders</h3>
+
 
       @foreach($orders as $order)
       <div class="row searched-item cart-list-divider">
-       
+
         <div class="col-sm-3">
           <div class="">
             <h2>Order ID: {{ $order->id }}</h2>
@@ -19,12 +20,14 @@
             <h5>Address: {{ $order->address }}</h5>
             <h5>Payment Method: {{ $order->payment_method }}</h5>
             <h5>Payment Status: {{ $order->payment_status }}</h5>
-            
-<a href="{{ route('orders.edit', $order->id) }}" class="btn btn-primary">Update order</a>
+            <h5>Order Placed: {{ \Carbon\Carbon::parse($order->created_at)->diffForHumans() }}</h5>
+            <h5>Order Updated: {{ \Carbon\Carbon::parse($order->updated_at)->diffForHumans() }}</h5>
+
+            <a href="{{ route('orders.edit', $order->id) }}" class="btn btn-primary my-2">Update order</a>
 
 
           </div>
-          
+
         </div>
 
 
