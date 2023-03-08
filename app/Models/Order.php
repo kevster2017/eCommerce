@@ -10,6 +10,9 @@ class Order extends Model
     use HasFactory;
     public $timestamps = true;
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
 
-    
+    ];
 }

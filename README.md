@@ -2,7 +2,7 @@
 
 This web application covers the basic CRUD functionality of an eCommerce website. A user can sign up, view items for sale, add items to cart and complete the item purchase. 
 In addition to this, an administrator can add items for sale, edit items and delete items. 
-They system is designed using a Model View Controller (MVC) architecture.
+The system is designed using a Model View Controller (MVC) architecture.
 
 ## Description
 The application will allow a user to register an account and create their profile. A welcome email is then sent to the new user welcoming them to the application. 

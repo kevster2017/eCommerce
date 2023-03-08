@@ -72,6 +72,7 @@ class ProductController extends Controller
     {
 
         $user_id = auth()->user()->id;
+
         $products = DB::table('cart')
             ->join('products', 'cart.product_id', '=', 'products.id')
             ->where('cart.user_id', $user_id)
@@ -136,6 +137,8 @@ class ProductController extends Controller
             ->where('orders.user_id', $user_id)
             ->paginate(5);
 
+
+        dd($orders);
 
         return view('orders.myOrders', ['orders' => $orders]);
     }
