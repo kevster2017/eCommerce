@@ -31,6 +31,8 @@
     <div>
       <form action="/orders/placeOrder" method="POST">
         @csrf
+        <input type="hidden" value="{{ auth()->user()->name }}" name="name">
+
         <div class="form-group mb-3">
           <textarea name="address" placeholder="Enter your address" class="form-control" id="address"></textarea>
           @error('address')

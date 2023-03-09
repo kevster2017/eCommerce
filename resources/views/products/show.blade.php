@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section("content")
 
-<div class="container loginView">
+<div class="container">
     <div class="row pt-5">
-        <div class="col-sm-6">
-            <img class="detail-img" src="/storage/{{ $products->image }}">
+        <div class="col-4">
+            <img class="img-fluid" src="/storage/{{ $products->image }}">
         </div>
-        <div class="col-sm-6">
+        <div class="col-8">
             <a href="/products">Go Back</a>
             <h2>Category: {{ $products->category }}</h2>
             <h2>{{ $products->name }}</h2>

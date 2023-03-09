@@ -58,4 +58,9 @@ class User extends Authenticatable
             Mail::to($user->email)->send(new NewUserWelcomeMail());
         });
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

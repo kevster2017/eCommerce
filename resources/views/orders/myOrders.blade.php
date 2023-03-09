@@ -1,14 +1,14 @@
 @extends('layouts.app')
 @section("content")
 
-<div class="container loginView">
+<div class="container">
 
   <div class="col-sm-10">
-    <div class="trending-wrapper">
+    <div class="container">
       <h1 class="text-center pb-3">My Orders</h1>
 
       @foreach($orders as $order)
-      <div class="row searched-item cart-list-divider">
+      <div class="container">
         <div class="col-sm-3">
 
           <img class="trending-img" src="/storage/{{ $order->image }}">

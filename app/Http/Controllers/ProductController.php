@@ -17,7 +17,8 @@ class ProductController extends Controller
 
     function index()
     {
-        $CarProducts = Product::all();
+        $CarProducts = Product::all()
+            ->take(4);
 
         $products = Product::latest()
             ->take(4)
@@ -26,6 +27,7 @@ class ProductController extends Controller
         $trends = Product::all()
             ->take(-4);
 
+        // dd($CarProducts);
         return view('products.product', compact('products', 'trends', 'CarProducts'));
     }
 
@@ -117,6 +119,7 @@ class ProductController extends Controller
             $order = new Order;
             $order->product_id = $cart->product_id;
             $order->user_id = $cart->user_id;
+            $order->name = $req->name;
             $order->status = "Pending";
             $order->address = $req->address;
             $order->payment_method = $req->payment;

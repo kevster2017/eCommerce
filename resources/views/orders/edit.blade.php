@@ -19,7 +19,7 @@
     @method('PUT')
 
     <h1>Edit Order Number: {{ $order->id }} </h1>
-    <h2>User ID: {{ $order->user_id }} </h2>
+    <h2>User Name: {{ $order->name }} </h2>
     <br><br>
     <div class="container mb-3">
 
