@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section("content")
 
-<div class="container loginView">
+<div class="container">
 
   <div class="col-sm-10">
     <table class="table table-bordered">
