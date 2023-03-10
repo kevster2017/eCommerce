@@ -48,7 +48,7 @@
               <a class="nav-link active" aria-current="page" href="/products">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/orders/myOrders">Orders</a>
+              <a class="nav-link active" aria-current="page" href="/orders/myOrders">My Orders</a>
             </li>
 
             <!-- Display only if the authenticated user is an admin -->

@@ -62,7 +62,7 @@
       <div class="trending-item">
         <a href="/products/show/{{ $product->id }}">
           <img class="trending-img" src="/storage/{{ $product->image }}">
-          <div class="">
+          <div class="col-3">
             <h5>{{ $product->name }}</h5>
 
           </div>
