@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductIndexController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\PaypalController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,7 +62,18 @@ Route::get("/products/wmindex", [ProductIndexController::class, 'WMIndex'])->nam
 Route::get("/products/cookerindex", [ProductIndexController::class, 'cookerIndex'])->name('products.cookerindex');
 Route::get("/products/mobileindex", [ProductIndexController::class, 'mobileIndex'])->name('products.mobileindex');
 
+/* PayPal Routes Old
+Route::get('paywithpaypal', array('as' => 'paywithpaypal', 'uses' => 'PaypalController@payWithPaypal'));
+Route::post('paypal', array('as' => 'paypal', 'uses' => 'PaypalController@postPaymentWithpaypal'));
+Route::get('paypal', array('as' => 'status', 'uses' => 'PaypalController@getPaymentStatus'));
+*/
 
+/* PayPal Routes */
+
+
+Route::post('/pay', [PaypalController::class, 'pay'])->name('paypal');
+Route::get('/success', [PaypalController::class, 'success']);
+Route::get('/error', [PaypalController::class, 'error']);
 
 require __DIR__ . '/auth.php';
 

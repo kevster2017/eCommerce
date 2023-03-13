@@ -44,14 +44,27 @@
 
         <input type="radio" value="Online" name="payment"><span> Online Payment</span><br><br>
 
+
+
+
         <!-- Alternative payment types
-    <input type="radio" value="EMI" name="payment"><span> EMI Payment</span><br><br>
     <input type="radio" value="Cash" name="payment"><span> Cash on Delivery</span><br><br>
 -->
 
 
         <button type="submit" class="btn btn-success">Order Now</button>
       </form>
+
+      <div class="">
+        <form action="{{ route('paypal') }}" method="POST">
+          @csrf
+          <input type="hidden" name="amount" value="{{$total+10}}">
+
+
+          <button type="submit" class="btn btn-info my-3">Pay with PayPal</button>
+        </form>
+
+      </div>
     </div>
   </div>
 </div>
