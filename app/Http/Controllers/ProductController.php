@@ -128,22 +128,45 @@ class ProductController extends Controller
             // Cart::where('user_id', $user_id)->delete();
 
         }
-        return redirect('/orders/stripe');
+
+        if ($order->payment_method == 'Online') {
+            return redirect('/orders/stripe');
+        }
+
+        if ($order->payment_method == 'PayPal') {
+            $total = DB::table('cart')
+                ->join('products', 'cart.product_id', '=', 'products.id')
+                ->where('cart.user_id', $user_id)
+                ->sum('products.price');
+
+            return view('/orders/paypal', ['total' => $total]);
+        } else {
+            return redirect('/orders/stripe');
+        }
     }
 
     function myOrders()
     {
 
         $user_id = auth()->user()->id;
+
+        $orderId = DB::table('orders')
+            ->where('user_id', $user_id)
+            ->get();
+
         $orders = DB::table('orders')
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('orders.user_id', $user_id)
             ->paginate(5);
 
+        /*
+        $orders = DB::table('orders')
+            ->where('user_id', $user_id)
+            ->paginate(5);
+*/
+        dd($orders);
 
-        // dd($orders);
-
-        return view('orders.myOrders', ['orders' => $orders]);
+        return view('orders.myOrders', ['orders' => $orders, 'orderId' => $orderId]);
     }
 
 

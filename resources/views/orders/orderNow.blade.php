@@ -43,6 +43,7 @@
         </div>
 
         <input type="radio" value="Online" name="payment"><span> Online Payment</span><br><br>
+        <input type="radio" value="PayPal" name="payment"><span> PayPal Payment</span><br><br>
 
 
 

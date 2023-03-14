@@ -6,6 +6,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
 use App\Models\Payment;
+use App\Models\Cart;
+use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 
 class PaypalController extends Controller
@@ -24,7 +27,25 @@ class PaypalController extends Controller
     public function pay(Request $request)
     {
 
-        //dd($request);
+        $user_id = auth()->user()->id;
+
+        $fullCart = Cart::where('user_id', $user_id)
+            ->get();
+
+        foreach ($fullCart as $cart) {
+            $order = Order::where('user_id', $user_id)->get();
+
+
+            $order->user_id = $cart->user_id;
+            $order->status = "Pending";
+
+            $order->payment_status = "Paid";
+            //  $order->save();
+
+
+        }
+
+
         try {
             $response = $this->gateway->purchase(array(
                 'amount' => $request->amount,
@@ -49,8 +70,6 @@ class PaypalController extends Controller
     public function success(Request $request)
     {
 
-
-
         if ($request->input('paymentId') && $request->input('PayerID')) {
             $transaction = $this->gateway->completePurchase(array(
                 'payer_id' => $request->input('PayerID'),
@@ -74,7 +93,9 @@ class PaypalController extends Controller
 
                 $payment->save();
 
+                $user_id = auth()->user()->id;
 
+                Cart::where('user_id', $user_id)->delete();
 
 
                 return redirect('/orders/myOrders')->with('success', "Payment Successful. Transaction Id is: " . $arr['id']);

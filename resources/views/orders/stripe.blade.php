@@ -8,7 +8,7 @@
          <div class="panel panel-default credit-card-box">
             <div class="panel-heading">
                <div class="row">
-                  <h3>Payment Details</h3>
+                  <h3>Payment By Card</h3>
 
                </div>
             </div>
@@ -58,8 +58,9 @@
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now</button>
                      </div>
                   </div>
-               </form>
+               </form> <!-- End Pay by Card Form -->
             </div>
+
          </div>
       </div>
    </div>
