@@ -24,9 +24,13 @@
       </tr>
     </thead>
     <tbody>
+
+
       @foreach($orders as $order)
       <tr>
-        <th scope="row">{{ $order->id }}</a></th>
+
+        <th scope="row">{{ $order->order_id }}</a></th>
+
         <td><img class="trending-img" src="/storage/{{ $order->image }}"></td>
         <td>{{ $order->name }}</td>
         <td>{{ $order->address }}</td>
@@ -38,6 +42,7 @@
 
 
       </tr>
+
       @endforeach
 
 

@@ -150,23 +150,17 @@ class ProductController extends Controller
 
         $user_id = auth()->user()->id;
 
-        $orderId = DB::table('orders')
+        $ids = DB::table('orders')
             ->where('user_id', $user_id)
             ->get();
 
         $orders = DB::table('orders')
             ->join('products', 'orders.product_id', '=', 'products.id')
             ->where('orders.user_id', $user_id)
+            ->select('*', 'orders.id as order_id') // Selects the original order ID
             ->paginate(5);
 
-        /*
-        $orders = DB::table('orders')
-            ->where('user_id', $user_id)
-            ->paginate(5);
-*/
-        dd($orders);
-
-        return view('orders.myOrders', ['orders' => $orders, 'orderId' => $orderId]);
+        return view('orders.myOrders', ['orders' => $orders, 'ids' => $ids]);
     }
 
 
