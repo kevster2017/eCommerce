@@ -55,7 +55,8 @@
 
         <button type="submit" class="btn btn-success">Order Now</button>
       </form>
-
+      <!--
+     
       <div class="">
         <form action="{{ route('paypal') }}" method="POST">
           @csrf
@@ -66,6 +67,7 @@
         </form>
 
       </div>
+-->
     </div>
   </div>
 </div>
