@@ -24,6 +24,7 @@ The application was developed using Laravel 9 and Bootstrap 5.2
 * Middleware
 * Stripe payments
 * Font Awesome Icons
+* PayPal integration
 
 ### Standard User Features
 Once registered/logged in, a standard user can avail of the following features:
@@ -34,6 +35,7 @@ Once registered/logged in, a standard user can avail of the following features:
 *	Remove items from cart
 *	Order an item
 *	Enter their card details to pay for the item
+*   Select an option to pay with PayPal
 * 	View their order history
 
 ### Administrator Features
@@ -52,6 +54,17 @@ To use the Stripe payment system, a user is required to enter the following card
 * Expiry Date M/Y: 12/2034
 
 Further information on Stripe Payments can be found at: https://stripe.com/docs/testing
+
+## PayPal payment
+To pay using PayPal, a user is required to have a live PayPal account. 
+To use PayPal with this app, the user is required to log into PayPal developer using the link https://developer.paypal.com/home 
+The following details are required to integrate PayPal with the application.
+* A sandbox account, which can be created through PayPal developer
+* A Client ID and Secret ID
+* The Client ID and Secret ID should be added to the .env file
+* The customer email address and password can be found by viewing the details within the personal user sandbox account
+* The email and password are used to log into PayPal to complete the test transaction
+
 
 
 ## Licence
